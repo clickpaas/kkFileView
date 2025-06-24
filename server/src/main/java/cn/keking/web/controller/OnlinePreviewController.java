@@ -76,7 +76,7 @@ public class OnlinePreviewController {
         return doPreview(model, req, fileUrl);
     }
 
-    @GetMapping( "/op/view.aspx")
+    @GetMapping( "/view.aspx")
     public String onlinePreview2Microsoft(String src, Model model, HttpServletRequest req) {
 
         String fileUrl;

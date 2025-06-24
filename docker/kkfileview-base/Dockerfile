@@ -1,4 +1,4 @@
-FROM ubuntu:24.04
+FROM registry.bizsaas.net/docker.io/ubuntu:24.04
 
 RUN sed -i 's@//.*archive.ubuntu.com@//mirrors.aliyun.com@g' /etc/apt/sources.list.d/ubuntu.sources &&\
     sed -i 's@//security.ubuntu.com@//mirrors.aliyun.com@g' /etc/apt/sources.list.d/ubuntu.sources &&\
