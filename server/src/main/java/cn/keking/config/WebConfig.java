@@ -93,6 +93,7 @@ public class WebConfig implements WebMvcConfigurer {
         filterUri.add("/");
         filterUri.add("/onlinePreview");
         filterUri.add("/picturesPreview");
+        filterUri.add("/view.aspx");
         AttributeSetFilter filter = new AttributeSetFilter();
         FilterRegistrationBean<AttributeSetFilter> registrationBean = new FilterRegistrationBean<>();
         registrationBean.setFilter(filter);
