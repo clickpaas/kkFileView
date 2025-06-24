@@ -73,6 +73,24 @@ public class OnlinePreviewController {
             String errorMsg = String.format(BASE64_DECODE_ERROR_MSG, "url");
             return otherFilePreview.notSupportedFile(model, errorMsg);
         }
+        return doPreview(model, req, fileUrl);
+    }
+
+    @GetMapping( "/op/view.aspx")
+    public String onlinePreview2Microsoft(String src, Model model, HttpServletRequest req) {
+
+        String fileUrl;
+        try {
+            fileUrl = src;
+        } catch (Exception ex) {
+            String errorMsg = String.format(BASE64_DECODE_ERROR_MSG, "url");
+            return otherFilePreview.notSupportedFile(model, errorMsg);
+        }
+        return doPreview(model, req, fileUrl);
+    }
+
+
+    private String doPreview(Model model, HttpServletRequest req, String fileUrl) {
         FileAttribute fileAttribute = fileHandlerService.getFileAttribute(fileUrl, req);  //这里不在进行URL 处理了
         model.addAttribute("file", fileAttribute);
         FilePreview filePreview = previewFactory.get(fileAttribute);
@@ -81,7 +99,7 @@ public class OnlinePreviewController {
         if (ObjectUtils.isEmpty(fileUrl)) {
             return otherFilePreview.notSupportedFile(model, "非法路径,不允许访问");
         }
-        return filePreview.filePreviewHandle(fileUrl, model, fileAttribute);  //统一在这里处理 url
+        return filePreview.filePreviewHandle(fileUrl, model, fileAttribute);
     }
 
     @GetMapping( "/picturesPreview")
@@ -178,7 +196,7 @@ public class OnlinePreviewController {
      *
      * @param url 请编码后在入队
      */
-    @GetMapping("/addTask")
+//    @GetMapping("/addTask")
     @ResponseBody
     public String addQueueTask(String url) {
         logger.info("添加转码队列url：{}", url);

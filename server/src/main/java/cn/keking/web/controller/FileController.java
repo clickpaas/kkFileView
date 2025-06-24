@@ -53,7 +53,7 @@ public class FileController {
     private final String demoPath = demoDir + File.separator;
     public static final String BASE64_DECODE_ERROR_MSG = "Base64解码失败，请检查你的 %s 是否采用 Base64 + urlEncode 双重编码了！";
 
-    @PostMapping("/fileUpload")
+//    @PostMapping("/fileUpload")
     public ReturnResponse<Object> fileUpload(@RequestParam("file") MultipartFile file) {
         ReturnResponse<Object> checkResult = this.fileUploadCheck(file);
         if (checkResult.isFailure()) {
@@ -74,7 +74,7 @@ public class FileController {
         }
     }
 
-    @GetMapping("/deleteFile")
+//    @GetMapping("/deleteFile")
     public ReturnResponse<Object> deleteFile(HttpServletRequest request, String fileName, String password) {
         ReturnResponse<Object> checkResult = this.deleteFileCheck(request, fileName, password);
         if (checkResult.isFailure()) {
@@ -95,7 +95,7 @@ public class FileController {
     /**
      * 验证码方法
      */
-    @RequestMapping("/deleteFile/captcha")
+//    @RequestMapping("/deleteFile/captcha")
     public void captcha(HttpServletRequest request, HttpServletResponse response) throws Exception {
         if (!ConfigConstants.getDeleteCaptcha()) {
             return;
@@ -124,7 +124,7 @@ public class FileController {
         outputStream.close();
     }
 
-    @GetMapping("/listFiles")
+//    @GetMapping("/listFiles")
     public List<Map<String, String>> getFiles() {
         List<Map<String, String>> list = new ArrayList<>();
         File file = new File(fileDir + demoPath);
@@ -204,7 +204,7 @@ public class FileController {
         return ReturnResponse.success(fileName);
     }
 
-    @GetMapping("/directory")
+//    @GetMapping("/directory")
     public Object directory(String urls) {
         String fileUrl;
         try {
